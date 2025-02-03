@@ -1,10 +1,20 @@
+import icons from "@/constants/icons";
 import images from "@/constants/images";
 import React, { FC } from "react";
-import { Image, SafeAreaView, ScrollView, Text, View } from "react-native";
+import {
+  Image,
+  SafeAreaView,
+  ScrollView,
+  Text,
+  TouchableOpacity,
+  View,
+} from "react-native";
 
 interface Props {}
 
 const signIn: FC<Props> = (props) => {
+  const handleLogin = () => {};
+
   return (
     <SafeAreaView className="bg-white h-full">
       <ScrollView contentContainerClassName="h-full">
@@ -21,6 +31,25 @@ const signIn: FC<Props> = (props) => {
             Let's get you close to {"\n"}
             <Text className="text-primary-300">Your ideal home</Text>
           </Text>
+          <Text className="text-lg font-rubik text-black-200  text-center mt-12">
+            Login to ReState with Google
+          </Text>
+
+          <TouchableOpacity
+            onPress={handleLogin}
+            className="bg-white shadow-md shadow-zinc-300 rounded-full w-full py-4 mt-5"
+          >
+            <View className="flex flex-row items-center justify-center">
+              <Image
+                source={icons.google}
+                className="h-5 w-5"
+                resizeMode="contain"
+              />
+              <Text className="text-lg font-rubik-medium text-black-300 ml-2">
+                Continue with Google
+              </Text>
+            </View>
+          </TouchableOpacity>
         </View>
       </ScrollView>
     </SafeAreaView>
