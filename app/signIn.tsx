@@ -1,7 +1,10 @@
 import icons from "@/constants/icons";
 import images from "@/constants/images";
+import { login } from "@/lib/appwrite";
+import { useGlobalContext } from "@/lib/global-provider";
 import React, { FC } from "react";
 import {
+  Alert,
   Image,
   SafeAreaView,
   ScrollView,
@@ -13,7 +16,17 @@ import {
 interface Props {}
 
 const signIn: FC<Props> = (props) => {
-  const handleLogin = () => {};
+  const { refetch, loading, isLogged } = useGlobalContext();
+  const handleLogin = async () => {
+    const result = await login();
+
+    if (result) {
+      // console.log("Login successful");
+      refetch({});
+    } else {
+      Alert.alert("Error", "Failed to login!");
+    }
+  };
 
   return (
     <SafeAreaView className="bg-white h-full">
